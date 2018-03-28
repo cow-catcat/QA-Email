@@ -5,12 +5,12 @@ const extractLess = new ExtractTextPlugin({
     filename: 'app.css'
 });
 const htmlExtract = new HtmlExtract({
-    filename: './login.html',
-    template: './src/login.html'
+    filename: './index.html',
+    template: './src/index.html'
 });
 
 const _config = {
-    entry: './src/login.js',
+    entry: './src/index.js',
     output: {
         path: __dirname +'/dist',
         filename: 'app.js'
