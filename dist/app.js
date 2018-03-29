@@ -63,22 +63,20 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var login = __webpack_require__(10);
-__webpack_require__(8);
+var login = __webpack_require__(1);
+__webpack_require__(2);
 
 login.init();
 
 /***/ }),
-
-/***/ 10:
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -174,22 +172,11 @@ var check = function () {
 
 module.exports = check;
 
-// $.ajax({
-//     url:Url,
-//     data:{checkname:enco,categoryId:cateId},//传入后台的两组数组数据值,根据个人需求传值
-//     type:"get",
-//     traditional:true,
-//     success : function(data){
-//          eval("var mydata="+data);
-//           $.each(mydata,function(i,item)
-
 /***/ }),
-
-/***/ 8:
+/* 2 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
-
-/******/ });
+/******/ ]);

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {   
+  "scripts": {
     "dev": "webpack -w --progress",
     "prod": "webpack -p && node src/controllers/parse.js",
     "parse": "node src/controllers/parse.js"
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cow-catcat/QA-Email#readme",
   "dependencies": {
+    "file-loader": "^1.1.11",
     "jquery": "^3.3.1"
   },
   "devDependencies": {

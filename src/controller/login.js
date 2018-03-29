@@ -92,11 +92,3 @@ return {
 module.exports = check;
 
 
-// $.ajax({
-//     url:Url,
-//     data:{checkname:enco,categoryId:cateId},//传入后台的两组数组数据值,根据个人需求传值
-//     type:"get",
-//     traditional:true,
-//     success : function(data){
-//          eval("var mydata="+data);
-//           $.each(mydata,function(i,item)
