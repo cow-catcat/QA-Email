@@ -1,4 +1,4 @@
-
+var $=require('jquery');
 var check = (function () {
 
     var $tip1 = $('#tip1');

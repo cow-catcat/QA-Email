@@ -93,3 +93,16 @@
   font-size: 14px;
   color: red;
 }
+.main-content {
+  width: 500px;
+  margin: 100px auto;
+}
+.main-content .item {
+  margin: 20px;
+}
+.win {
+  width: 100%;
+  height: 50%;
+  background: yellow;
+  display: none;
+}
