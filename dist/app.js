@@ -10443,6 +10443,7 @@ return jQuery;
 
 var login = __webpack_require__(2);
 var page1 = __webpack_require__(3);
+var test = __webpack_require__(14);
 __webpack_require__(4);
 __webpack_require__(5);
 page1.init();
@@ -10555,16 +10556,37 @@ module.exports = check;
 
 var $ = __webpack_require__(0);
 
+//array
 var page1 = function () {
+    var _opt = {
+        element: '.dataItem'
+    };
+    var $element = $(_opt.element);
+    var dataArr = [];
+    function getData() {
+        // console.log('hi');
+        $element.each(function (index, item) {
+            dataArr.push($(item).val());
+        });
+    }
+
+    //渲染
+    function render(dataArr) {
+        var template = '\n            <p>Dear all,</p>\n            <p><span>' + dataArr[0] + '</span>\u6D4B\u8BD5\u5DF2\u5B8C\u6210\uFF0C\u8BE6\u89C1\u4EE5\u4E0B\u5185\u5BB9:</p>\n            <p><span>' + dataArr[1] + '</span><span>' + dataArr[2] + '</span>\u3002</p>\n            <p>\u6D4B\u8BD5\u8FC7\u7A0B\u4E2D\u53D1\u73B0\u7684\u95EE\u9898:<span">' + dataArr[3] + '</span></p>\n            <p>\u6D4B\u8BD5\u8BF4\u660E\uFF1A<span">' + dataArr[4] + '</span></p>\n            <p>\u6D4B\u8BD5\u5185\u5BB9\uFF1A' + dataArr[5] + '</p>\n        ';
+        $('.pop').html(template);
+    }
+
     function init() {
         var isShow = false;
         $('.preButton').on('click', function () {
             if (!isShow) {
                 isShow = !isShow;
-                $('.win').show();
+                $('.pop').show();
+                getData();
+                render(dataArr);
             } else if (isShow) {
                 isShow = !isShow;
-                $('.win').hide();
+                $('.pop').hide();
             }
         });
     }
@@ -10586,6 +10608,56 @@ module.exports = page1;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var $ = __webpack_require__(0);
+var test = function () {
+
+    var _opt = {
+        el: '.data'
+    };
+    var $el = $(_opt.el); // array
+    var dataArr = [];
+
+    function getData() {
+        $el.each(function (index, item) {
+            dataArr.push($(item).val());
+        });
+    }
+
+    function render(dataArr) {
+        var template = '\n            <h1>' + dataArr[0] + '</h1>\n            <p>' + dataArr[1] + '</p>\n            <ul>\n                <li>' + dataArr[2] + '</li>\n                <li>' + dataArr[3] + '</li>\n                <li>' + dataArr[4] + '</li>\n            </ul>\n        ';
+        $('#app').html(template);
+    }
+
+    function init() {
+        $('#btn').on('click', function () {
+            getData();
+            // console.log(dataArr);
+            render(dataArr);
+        });
+    }
+
+    return {
+        init: init
+    };
+}();
+
+module.exports = test;
 
 /***/ })
 /******/ ]);
