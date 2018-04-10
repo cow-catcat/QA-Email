@@ -12,52 +12,51 @@ $(".button").click(function(event){
   });
 
 //用户账号
-    function checkUser(user) {
+    function checkUser() {
         var user = $user.val();
         if (user === undefined || user === "") {
             $tip1.show();
-            return user;
+            return ;
         }
-        var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@sina.com$/;
+        var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@sina.cn$/;
         var flag = reg.test(user);
 
         if (!flag) {
             $tip1.show();
         }else {
             $tip1.hide();
-            return password;
+            return user;
         }
     }
 
 //用户密码
-    function checkPwd(password) {
+    function checkPwd() {
         var password = $pwd.val();
         if (password === undefined || password === "") {
             $tip2.show();
-            // console.log('123');
-            return;//退出函数
+            console.log('123');
+            return ;//退出函数
            
         } else{  
-            // console.log('hi');  
-            return true; 
+            console.log('hi');  
+            return password; 
         }         
      }
 
 //都成立时进行判断
-    function checkAll(password,user){
-        var user = $user.val();
-        var password = $pwd.val();
-        console.log('pig');
-        if(checkPwd(password)&&checkUser(user)){
-            
+    function checkAll(){
+        // var user = $user.val();
+        // var password = $pwd.val();
+        // console.log('pig');
+        if(checkPwd()&&checkUser()){
                 $.ajax({
-                    type:'post', 
+                    type:'POST', 
                     url:'../login.php',
                     data:{
                         user:checkUser(),
                         password:checkPwd()
                     }, 
-                    dataType:'json',
+                    // dataType:'json',
                     success:function(data){     
                       alert('success');
                     },
@@ -65,21 +64,21 @@ $(".button").click(function(event){
                       alert("请求失败");
                     }
                    })
-                //    console.log("a");
+                   console.log("a");
             }  
         }
 
 //init 开始;监听
     function init(){
         $user.on('blur', function () {
-            checkUser(user);
+            checkUser();
         });
         $pwd.on('blur',function(){
-            checkPwd(password);
+            checkPwd();
         });
         $('.button').on('click',function(){
             // console.log('love');
-            checkAll(user,password);
+            checkAll();
         });
 }
 

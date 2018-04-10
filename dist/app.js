@@ -10443,9 +10443,9 @@ return jQuery;
 
 var login = __webpack_require__(2);
 var page1 = __webpack_require__(3);
-var test = __webpack_require__(14);
-__webpack_require__(4);
+var test = __webpack_require__(4);
 __webpack_require__(5);
+__webpack_require__(6);
 page1.init();
 login.init();
 
@@ -10470,51 +10470,50 @@ var check = function () {
     });
 
     //用户账号
-    function checkUser(user) {
+    function checkUser() {
         var user = $user.val();
         if (user === undefined || user === "") {
             $tip1.show();
-            return user;
+            return;
         }
-        var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@sina.com$/;
+        var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@sina.cn$/;
         var flag = reg.test(user);
 
         if (!flag) {
             $tip1.show();
         } else {
             $tip1.hide();
-            return password;
+            return user;
         }
     }
 
     //用户密码
-    function checkPwd(password) {
+    function checkPwd() {
         var password = $pwd.val();
         if (password === undefined || password === "") {
             $tip2.show();
-            // console.log('123');
+            console.log('123');
             return; //退出函数
         } else {
-            // console.log('hi');  
-            return true;
+            console.log('hi');
+            return password;
         }
     }
 
     //都成立时进行判断
-    function checkAll(password, user) {
-        var user = $user.val();
-        var password = $pwd.val();
-        console.log('pig');
-        if (checkPwd(password) && checkUser(user)) {
-
+    function checkAll() {
+        // var user = $user.val();
+        // var password = $pwd.val();
+        // console.log('pig');
+        if (checkPwd() && checkUser()) {
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: '../login.php',
                 data: {
                     user: checkUser(),
                     password: checkPwd()
                 },
-                dataType: 'json',
+                // dataType:'json',
                 success: function success(data) {
                     alert('success');
                 },
@@ -10522,21 +10521,21 @@ var check = function () {
                     alert("请求失败");
                 }
             });
-            //    console.log("a");
+            console.log("a");
         }
     }
 
     //init 开始;监听
     function init() {
         $user.on('blur', function () {
-            checkUser(user);
+            checkUser();
         });
         $pwd.on('blur', function () {
-            checkPwd(password);
+            checkPwd();
         });
         $('.button').on('click', function () {
             // console.log('love');
-            checkAll(user, password);
+            checkAll();
         });
     }
 
@@ -10572,8 +10571,28 @@ var page1 = function () {
 
     //渲染
     function render(dataArr) {
-        var template = '\n            <p>Dear all,</p>\n            <p><span>' + dataArr[0] + '</span>\u6D4B\u8BD5\u5DF2\u5B8C\u6210\uFF0C\u8BE6\u89C1\u4EE5\u4E0B\u5185\u5BB9:</p>\n            <p><span>' + dataArr[1] + '</span><span>' + dataArr[2] + '</span>\u3002</p>\n            <p>\u6D4B\u8BD5\u8FC7\u7A0B\u4E2D\u53D1\u73B0\u7684\u95EE\u9898:<span">' + dataArr[3] + '</span></p>\n            <p>\u6D4B\u8BD5\u8BF4\u660E\uFF1A<span">' + dataArr[4] + '</span></p>\n            <p>\u6D4B\u8BD5\u5185\u5BB9\uFF1A' + dataArr[5] + '</p>\n        ';
+        var template = '\n            <p>Dear all,</p>\n            <p><span>' + dataArr[0] + '</span>\u6D4B\u8BD5\u5DF2\u5B8C\u6210\uFF0C\u8BE6\u89C1\u4EE5\u4E0B\u5185\u5BB9:</p>\n            <p>\u6D4B\u8BD5\u7ED3\u8BBA\uFF1A<span>' + dataArr[1] + '</span></p>\n            <p>\u6D4B\u8BD5\u8FC7\u7A0B\u4E2D\u53D1\u73B0\u7684\u95EE\u9898:<span>' + dataArr[2] + '</span></p>\n            <p>\u6D4B\u8BD5\u8BF4\u660E\uFF1A<span">' + dataArr[3] + '</span></p>\n            <p>\u6D4B\u8BD5\u5185\u5BB9\uFF1A' + dataArr[4] + '</p>\n            <button class="submitBtn">\u63D0\u4EA4</button>\n        ';
         $('.pop').html(template);
+    }
+
+    //发送
+    function send() {
+        $('.submitBtn').on('click', function () {
+            $.ajax({
+                type: 'post',
+                url: '../sendemail.php',
+                data: {
+                    render: render(dataArr)
+                },
+                // dataType:'json',
+                success: function success(data) {
+                    alert('success');
+                },
+                error: function error() {
+                    alert("请求失败");
+                }
+            });
+        });
     }
 
     function init() {
@@ -10584,6 +10603,7 @@ var page1 = function () {
                 $('.pop').show();
                 getData();
                 render(dataArr);
+                send();
             } else if (isShow) {
                 isShow = !isShow;
                 $('.pop').hide();
@@ -10599,26 +10619,6 @@ module.exports = page1;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10658,6 +10658,18 @@ var test = function () {
 }();
 
 module.exports = test;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
