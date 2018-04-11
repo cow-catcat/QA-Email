@@ -10443,9 +10443,9 @@ return jQuery;
 
 var login = __webpack_require__(2);
 var page1 = __webpack_require__(3);
-var test = __webpack_require__(4);
+// var test = require('./controller/test.js')
+__webpack_require__(4);
 __webpack_require__(5);
-__webpack_require__(6);
 page1.init();
 login.init();
 
@@ -10571,8 +10571,8 @@ var page1 = function () {
 
     //渲染
     function render(dataArr) {
-        var template = '\n            <p>Dear all,</p>\n            <p><span>' + dataArr[0] + '</span>\u6D4B\u8BD5\u5DF2\u5B8C\u6210\uFF0C\u8BE6\u89C1\u4EE5\u4E0B\u5185\u5BB9:</p>\n            <p>\u6D4B\u8BD5\u7ED3\u8BBA\uFF1A<span>' + dataArr[1] + '</span></p>\n            <p>\u6D4B\u8BD5\u8FC7\u7A0B\u4E2D\u53D1\u73B0\u7684\u95EE\u9898:<span>' + dataArr[2] + '</span></p>\n            <p>\u6D4B\u8BD5\u8BF4\u660E\uFF1A<span">' + dataArr[3] + '</span></p>\n            <p>\u6D4B\u8BD5\u5185\u5BB9\uFF1A' + dataArr[4] + '</p>\n            <button class="submitBtn">\u63D0\u4EA4</button>\n        ';
-        $('.pop').html(template);
+        var template = '\n            <div class="item title">\n                <div class="titlePic"></div>\n                <span><div class="btitle">Title title title</div></span>\n            </div>\n            <div class="item sayhello">\n                <div class="fonts titleFonts">Dear all,</div>\n                <div>\n                    <p>xxxx\u5728xxxx\u73AF\u5883\u6D4B\u8BD5\u5DF2\u5B8C\u6210\uFF0C\u8BE6\u89C1\u4EE5\u4E0B\u5185\u5BB9\u3002</p>\n                </div>\n            </div>\n\n            <div class="item conclusion">\n                <div class="titleFonts">\u6D4B\u8BD5\u7ED3\u8BBA</div>\n                <p>xxxx\u5728xxx\u73AF\u5883\u4E2D\u6D4B\u8BD5\u901A\u8FC7\u3002</p>\n            </div>\n\n            <div class="item unsolve">\n                <div class="titleFonts">\u9057\u7559\u95EE\u9898</div>\n                <div class="unContent"></div>\n            </div>\n            <div class="item shuoming">\n                <div class="titleFonts">\u6D4B\u8BD5\u8BF4\u660E</div>\n                <div class="testsm"></div>\n            </div>\n            <div class="item jianrong">\n                <div class="titleFonts">\u517C\u5BB9\u6027\u6D4B\u8BD5</div>\n                <div class="jrContent"></div>\n            </div>\n            <div class="item content">\n                <div class="titleFonts">\u6D4B\u8BD5\u5185\u5BB9</div>\n                <div class="testContent"></div>\n            </div>\n        ';
+        $('.popContent').html(template);
     }
 
     //发送
@@ -10585,8 +10585,12 @@ var page1 = function () {
                     render: render(dataArr)
                 },
                 // dataType:'json',
-                success: function success(data) {
-                    alert('success');
+                success: function success() {
+                    if (retcode == "true") {
+                        $('.showtips').html(message);
+                    } else {
+                        $('.showtips').html(message);
+                    }
                 },
                 error: function error() {
                     alert("请求失败");
@@ -10619,54 +10623,12 @@ module.exports = page1;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var $ = __webpack_require__(0);
-var test = function () {
-
-    var _opt = {
-        el: '.data'
-    };
-    var $el = $(_opt.el); // array
-    var dataArr = [];
-
-    function getData() {
-        $el.each(function (index, item) {
-            dataArr.push($(item).val());
-        });
-    }
-
-    function render(dataArr) {
-        var template = '\n            <h1>' + dataArr[0] + '</h1>\n            <p>' + dataArr[1] + '</p>\n            <ul>\n                <li>' + dataArr[2] + '</li>\n                <li>' + dataArr[3] + '</li>\n                <li>' + dataArr[4] + '</li>\n            </ul>\n        ';
-        $('#app').html(template);
-    }
-
-    function init() {
-        $('#btn').on('click', function () {
-            getData();
-            // console.log(dataArr);
-            render(dataArr);
-        });
-    }
-
-    return {
-        init: init
-    };
-}();
-
-module.exports = test;
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -18,15 +18,40 @@ var page1=(function(){
 //渲染
     function render(dataArr){
         let template = `
-            <p>Dear all,</p>
-            <p><span>${dataArr[0]}</span>测试已完成，详见以下内容:</p>
-            <p>测试结论：<span>${dataArr[1]}</span></p>
-            <p>测试过程中发现的问题:<span>${dataArr[2]}</span></p>
-            <p>测试说明：<span">${dataArr[3]}</span></p>
-            <p>测试内容：${dataArr[4]}</p>
-            <button class="submitBtn">提交</button>
+            <div class="item title">
+                <div class="titlePic"></div>
+                <span><div class="btitle">Title title title</div></span>
+            </div>
+            <div class="item sayhello">
+                <div class="fonts titleFonts">Dear all,</div>
+                <div>
+                    <p>xxxx在xxxx环境测试已完成，详见以下内容。</p>
+                </div>
+            </div>
+
+            <div class="item conclusion">
+                <div class="titleFonts">测试结论</div>
+                <p>xxxx在xxx环境中测试通过。</p>
+            </div>
+
+            <div class="item unsolve">
+                <div class="titleFonts">遗留问题</div>
+                <div class="unContent"></div>
+            </div>
+            <div class="item shuoming">
+                <div class="titleFonts">测试说明</div>
+                <div class="testsm"></div>
+            </div>
+            <div class="item jianrong">
+                <div class="titleFonts">兼容性测试</div>
+                <div class="jrContent"></div>
+            </div>
+            <div class="item content">
+                <div class="titleFonts">测试内容</div>
+                <div class="testContent"></div>
+            </div>
         `
-        $('.pop').html(template);
+        $('.popContent').html(template);
     }
 
 //发送
@@ -39,8 +64,12 @@ var page1=(function(){
                     render:render(dataArr)
                 }, 
                 // dataType:'json',
-                success:function(data){     
-                alert('success');
+                success:function(){ 
+                    if(retcode=="true"){
+                        $('.showtips').html(message);
+                    }else{
+                        $('.showtips').html(message);
+                    }
                 },
                 error:function(){
                 alert("请求失败");
