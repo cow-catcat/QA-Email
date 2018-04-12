@@ -1,5 +1,8 @@
+
 @color:#3d2912;
-@border:1px solid #949292;
+.bottom(@border:1px solid #949292;){
+    border-bottom:@border;
+}
 .titleFonts{
     color:@color;
     display: inline-block;
@@ -37,7 +40,7 @@
                 margin:20px;
             }
             .title{
-                border-bottom: @border;
+                .bottom;
                 .titlePic{
                     display: inline-block;
                     width:100px;
@@ -58,19 +61,19 @@
             }
 
             .conclusion{
-                border-bottom: @border;
+                .bottom;
             }
             .unsolve{
-                border-bottom: @border;
+                .bottom;
             }
             .shuoming{
-                border-bottom: @border;
+                .bottom;
             }
             .jianrong{
-                border-bottom: @border;
+                .bottom;
             }
             .content{
-                border-bottom: @border;
+                .bottom;
             }
         }
     }

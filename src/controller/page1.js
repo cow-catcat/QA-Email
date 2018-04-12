@@ -94,10 +94,7 @@ var page1=(function(){
                 isShow = !isShow;
                 $('.pop').hide();
             }
-            
         });
-
-
     }
     return {
         init: init
